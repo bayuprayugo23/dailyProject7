@@ -6,132 +6,88 @@
 
 ## Pengertian SIPADU
 
-SIPADU (Sistem Informasi Pengaduan Fasilitas Kampus) adalah sebuah aplikasi berbasis web yang dirancang untuk mempermudah civitas akademika dalam melaporkan, memantau, dan mengelola kerusakan fasilitas kampus secara terpusat dan transparan.
-
-Sistem ini memungkinkan pengguna untuk menyampaikan keluhan atau laporan terkait fasilitas seperti listrik, air, AC, WiFi, ruang kelas, dan lainnya, serta memantau status penanganannya secara real-time.
+| Aspek       | Penjelasan                                                                   |
+| ----------- | ---------------------------------------------------------------------------- |
+| Nama Sistem | SIPADU (Sistem Informasi Pengaduan Fasilitas Kampus)                         |
+| Deskripsi   | Sistem berbasis web untuk melaporkan dan memantau kerusakan fasilitas kampus |
+| Tujuan      | Mempermudah pelaporan, meningkatkan transparansi, dan monitoring perbaikan   |
+| Pengguna    | Mahasiswa, dosen, dan civitas kampus                                         |
 
 ---
 
 ## Fitur Sistem
 
-Berikut adalah fitur-fitur yang tersedia dalam website SIPADU:
-
-### 1. Autentikasi Pengguna
-
-* Registrasi akun pengguna
-* Login ke sistem
-* Menampilkan identitas pengguna yang sedang aktif
-
----
-
-### 2. Pembuatan Laporan
-
-* Input judul laporan
-* Pemilihan kategori fasilitas
-* Input lokasi kejadian
-* Penulisan deskripsi masalah
-* Penentuan tingkat prioritas (rendah, sedang, tinggi, darurat)
-* Input koordinat GPS (opsional)
-* Upload foto kerusakan (opsional)
-
----
-
-### 3. Manajemen Data Laporan
-
-* Data laporan tersimpan ke database Supabase
-* Setiap laporan terhubung dengan user melalui user_id
-* Menyimpan waktu pembuatan laporan
-
----
-
-### 4. Tracking Status Laporan
-
-* Status laporan terdiri dari:
-
-  * dikirim
-  * diproses
-  * diperbaiki
-  * selesai
-* Status dapat diperbarui sesuai proses perbaikan
-
----
-
-### 5. Laporan Saya
-
-* Menampilkan laporan berdasarkan user yang login
-* Data difilter menggunakan user_id
-* Memudahkan pengguna memantau laporan pribadi
-
----
-
-### 6. Semua Laporan
-
-* Menampilkan seluruh laporan dari semua pengguna
-* Data ditampilkan secara global
-* Mendukung transparansi sistem
-
----
-
-### 7. Dashboard Statistik
-
-* Menampilkan jumlah total laporan
-* Menampilkan jumlah laporan yang sedang diproses
-* Menampilkan jumlah laporan yang telah selesai
-
----
-
-### 8. Realtime Update
-
-* Data laporan dan statistik diperbarui secara otomatis
-* Tidak memerlukan refresh halaman
-* Menggunakan fitur realtime dari Supabase
-
----
-
-### 9. Sistem Prioritas
-
-* Laporan memiliki tingkat prioritas:
-
-  * rendah
-  * sedang
-  * tinggi
-  * darurat
-* Digunakan untuk menentukan tingkat urgensi penanganan
-
----
-
-### 10. Voting Laporan
-
-* Pengguna dapat memberikan dukungan pada laporan
-* Laporan dengan dukungan lebih tinggi dapat diprioritaskan
-
----
-
-### 11. Integrasi QR Code
-
-* Mendukung scan QR untuk input lokasi otomatis
-* Mempercepat proses pembuatan laporan
-
----
-
-### 12. Tracking Alur Perbaikan
-
-* Visualisasi tahapan perbaikan:
-
-  * dikirim → diverifikasi → diproses → diperbaiki → selesai
+| No | Fitur             | Deskripsi                                               |
+| -- | ----------------- | ------------------------------------------------------- |
+| 1  | Login & Register  | Pengguna dapat membuat akun dan masuk ke sistem         |
+| 2  | Pembuatan Laporan | Input judul, kategori, lokasi, deskripsi, dan prioritas |
+| 3  | Tracking Status   | Status laporan: dikirim, diproses, diperbaiki, selesai  |
+| 4  | Laporan Saya      | Menampilkan laporan milik user login                    |
+| 5  | Semua Laporan     | Menampilkan seluruh laporan dari semua user             |
+| 6  | Dashboard         | Menampilkan statistik laporan                           |
+| 7  | Realtime Update   | Data update otomatis tanpa refresh                      |
+| 8  | Voting Laporan    | User dapat memberi dukungan pada laporan                |
+| 9  | GPS Lokasi        | Input koordinat lokasi                                  |
+| 10 | Upload Foto       | Menambahkan bukti foto kerusakan                        |
+| 11 | QR Code           | Scan untuk isi lokasi otomatis                          |
+| 12 | Prioritas         | Tingkat urgensi laporan (rendah–darurat)                |
 
 ---
 
 ## Teknologi yang Digunakan
 
-* HTML
-* CSS
-* JavaScript
-* Supabase (Authentication, Database, Realtime)
-* GitHub Pages (Hosting)
+| Teknologi    | Fungsi                             |
+| ------------ | ---------------------------------- |
+| HTML         | Struktur halaman                   |
+| CSS          | Desain tampilan                    |
+| JavaScript   | Logika aplikasi                    |
+| Supabase     | Backend (Auth, Database, Realtime) |
+| GitHub Pages | Hosting website                    |
+
+---
+
+## Struktur Database
+
+| Kolom        | Tipe      | Keterangan        |
+| ------------ | --------- | ----------------- |
+| id           | uuid      | ID laporan        |
+| user_id      | uuid      | ID user           |
+| nama_pelapor | text      | Nama pelapor      |
+| judul        | text      | Judul laporan     |
+| kategori     | text      | Jenis fasilitas   |
+| lokasi       | text      | Lokasi kejadian   |
+| deskripsi    | text      | Detail masalah    |
+| prioritas    | text      | Tingkat prioritas |
+| status       | text      | Status laporan    |
+| created_at   | timestamp | Waktu dibuat      |
+
+---
+
+## Alur Sistem
+
+| Tahap | Keterangan                |
+| ----- | ------------------------- |
+| 1     | User login/register       |
+| 2     | User membuat laporan      |
+| 3     | Data disimpan ke database |
+| 4     | Laporan ditampilkan       |
+| 5     | Status diperbarui         |
+| 6     | User memantau hasil       |
+
+---
+
+## Deployment
+
+| Platform | Detail                                         |
+| -------- | ---------------------------------------------- |
+| Hosting  | GitHub Pages                                   |
+| URL      | https://bayuprayugo23.github.io/dailyProject7/ |
+| Backend  | Supabase                                       |
 
 ---
 
 ## Penutup
 
-SIPADU merupakan solusi digital untuk meningkatkan efisiensi pelaporan fasilitas kampus. Dengan sistem ini, proses pelaporan menjadi lebih cepat, transparan, dan terorganisir sehingga dapat meningkatkan kualitas layanan fasilitas di lingkungan kampus.
+| Kesimpulan                                                                                                             |
+| ---------------------------------------------------------------------------------------------------------------------- |
+| SIPADU merupakan sistem digital yang mempermudah pelaporan fasilitas kampus secara cepat, transparan, dan terintegrasi |
